@@ -6,8 +6,9 @@ on : [ push ]
 jobs : 
   job :
     runs-on : ubuntu-latest 
+
     env : 
-      GITHUB_BRANCH_REF : {{ github.ref }}
+      GITHUB_REF : ${{ github.ref }}
     steps :
       - name : step 0 checkout action 
         uses : actions/checkout@v3 
@@ -19,8 +20,8 @@ jobs :
         run : date 
 
       - name : step 3 
-        run : echo "branch $GITHUB_BRANCH_REF "
+        run : echo "branch $GITHUB_REF "
 
       - name : 
         run : ls -a 
-        
+
