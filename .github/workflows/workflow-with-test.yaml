@@ -1,0 +1,23 @@
+
+name : workflow with test 
+
+on : [ push ]
+
+jobs : 
+  test : 
+    runs-on : ubuntu-latest 
+
+    steps : 
+       - name : checkout repo 
+         uses : actions/checkout@v3 
+
+       - name : install python 
+         uses : actions/steup-python@v4 
+         with : 
+           python-version: '3.10'
+
+       - name : install pytest 
+         run : pip install pytest 
+
+       - name :  execute test 
+         run : pytest
